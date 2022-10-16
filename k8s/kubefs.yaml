@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: kubefs-web
+  name: kubefs-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubefs-web
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: kubefs-web
+    spec:
+      containers:
+      - image: cmwylie19/kubefs-web
+        name: kubefs-web
+        ports:
+        - containerPort: 3000
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kubefs-web
+    version: v1
+  name: kubefs-web
+spec:
+  ports:
+    - port: 3000
+      name: http
+  type: NodePort
+  selector:
+    app: kubefs-web
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: null
+  name: kubefs-web

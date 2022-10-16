@@ -1,0 +1,10 @@
+.image {
+    height: 200px;
+    border: none;
+    margin: 10px;
+ }
+ 
+ .image:hover {
+    height: 300px;
+    border: 15px solid red;
+ }

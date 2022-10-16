@@ -1,0 +1,1 @@
+export const Header = () => <header><h1>Kube-FS</h1></header>
