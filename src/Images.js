@@ -4,7 +4,7 @@ import "./Images.css";
 
 const filterPics = (pics, date) => {
   if(date !== ""){
-    return pics.filter(pic => pic.ModTime.indexOf(date,0) == 0)
+    return pics.filter(pic => pic.Name.substring(0,date.length+1) == "A"+date)
   } else {
     return pics
   }
