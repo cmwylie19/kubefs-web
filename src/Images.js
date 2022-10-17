@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import "./Images.css";
 
+const filterPics = (pics, date) => {
+  if(date !== ""){
+    return pics.filter(pic => pic.ModTime.indexOf(date,0) == 0)
+  } else {
+    return pics
+  }
+}
 const fetchPics = async (setPics) => {
   axios.get('http://192.168.1.209:30099/list')
     .then(res => {
@@ -36,7 +43,7 @@ const deletePic = (path, pics, setPics) => {
     })
 }
 
-function Images() {
+function Images({date}) {
   const [pics, setPics] = useState(null);
 
   useEffect(() => {
@@ -46,11 +53,11 @@ function Images() {
     }, 10000);
     return () => clearInterval(interval);
 
-  }, []);
+  }, [date]);
 
   return (
     <>
-      {pics && pics.map((pic) =>
+      {filterPics(pics,date) && filterPics(pics,date).map((pic) =>
         <img
           className="image"
           key={pic.Name}

@@ -1,1 +1,2 @@
-export const Header = () => <header><h1>Kube-FS</h1></header>
+import "./Header.css";
+export const Header = ({date, setDate}) => <header className="header"><h1>Kube-FS</h1><input type="text" placeholder="Date yyyy-mm-dd" value={date} onChange={e=>setDate(e.target.value)} /></header>

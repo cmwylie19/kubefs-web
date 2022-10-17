@@ -17,8 +17,9 @@
    right: 0;
    padding: 0px;
    display: flex;
-   justify-content: center;
-   align-items: center;
+   justify-content: space-between;
+   align-items: space-between;
+   flex-direction: row;
    height: 65px;
    text-align: center;
    background: #2c2d2d;
