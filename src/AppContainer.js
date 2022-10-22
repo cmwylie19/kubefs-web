@@ -3,8 +3,8 @@ import './AppContainer.css';
 export default function AppContainer(props) {
   return (
     <div>
-      <container className="header-container">{props.header}</container>
-      <container className="images-container">{props.images}</container>
+      <div className="header-container">{props.header}</div>
+      <div className="images-container">{props.images}</div>
     </div>
   );
 }

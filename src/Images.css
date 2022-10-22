@@ -1,11 +1,10 @@
 .image {
-    height: 200px;
+    height: 250px;
     border: none;
     margin: 10px;
     border-radius: 15px;
  }
  
  .image:hover {
-    height: 300px;
     border: 15px solid red;
  }
