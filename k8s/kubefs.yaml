@@ -21,7 +21,7 @@ spec:
       - image: cmwylie19/kubefs-web
         name: kubefs-web
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         resources: {}
 ---
 apiVersion: v1
@@ -33,8 +33,9 @@ metadata:
   name: kubefs-web
 spec:
   ports:
-    - port: 3000
+    - port: 80
       name: http
+      nodePort: 32217
   type: NodePort
   selector:
     app: kubefs-web

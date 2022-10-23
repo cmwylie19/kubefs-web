@@ -1,6 +1,6 @@
 # Frontend UI running in NGINX
-FROM node:16 AS builder
-LABEL description="Dashboard" \
+FROM node:18 AS builder
+LABEL description="KubeFS-Web" \
       maintainer="Casey Wylie casewylie@gmail.com"
 # Set working directory
 WORKDIR /app
