@@ -36,13 +36,15 @@ const setUnActive = (name, pics, setPics) => {
   setPics(pics)
 }
 
-const deletePic = (path, pics, setPics) => {
+const deletePic = (e, path, pics, setPics) => {
+  if (e.detail === 2) {
   axios.get('http://192.168.1.209:30099/delete/file' + path)
     .then(res => {
       if (res.data) {
         setPics(pics.filter(pic => pic.Path !== path));
       }
     })
+  }
 }
 
 function Images({date}) {
@@ -65,7 +67,7 @@ function Images({date}) {
           className="image"
           key={pic.Name}
           src={"http://192.168.1.209:30099" + pic.Path.replace("/media", "")}
-          onClick={() => deletePic(pic.Path, pics, setPics)}
+          onClick={(e) => deletePic(e,pic.Path, pics, setPics)}
           onMouseOver={() => setActive(pic.Name, pics, setPics)}
           onMouseOut={() => setUnActive(pic.Name, pics, setPics)}
         />)}
