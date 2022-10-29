@@ -3,8 +3,8 @@ import axios from 'axios'
 import "./Images.css";
 
 const filterPics = (pics, date) => {
-  if(date !== ""){
-    return pics.filter(pic => pic.Name.substring(0,date.length+1) === "A"+date)
+  if (date !== "") {
+    return pics.filter(pic => pic.Name.substring(0, date.length + 1) === "A" + date)
   } else {
     return pics
   }
@@ -38,16 +38,16 @@ const setUnActive = (name, pics, setPics) => {
 
 const deletePic = (e, path, pics, setPics) => {
   if (e.detail === 2) {
-  axios.get('http://192.168.1.209:30099/delete/file' + path)
-    .then(res => {
-      if (res.data) {
-        setPics(pics.filter(pic => pic.Path !== path));
-      }
-    })
+    axios.get('http://192.168.1.209:30099/delete/file' + path)
+      .then(res => {
+        if (res.data) {
+          setPics(pics.filter(pic => pic.Path !== path));
+        }
+      })
   }
 }
 
-function Images({date}) {
+function Images({ date }) {
   const [pics, setPics] = useState(null);
 
   useEffect(() => {
@@ -61,13 +61,13 @@ function Images({date}) {
 
   return (
     <>
-      {filterPics(pics,date) && filterPics(pics,date).map((pic) =>
+      {filterPics(pics, date) && filterPics(pics, date).map((pic) =>
         <img
           alt={pic.Name}
           className="image"
           key={pic.Name}
           src={"http://192.168.1.209:30099" + pic.Path.replace("/media", "")}
-          onClick={(e) => deletePic(e,pic.Path, pics, setPics)}
+          onClick={(e) => deletePic(e, pic.Path, pics, setPics)}
           onMouseOver={() => setActive(pic.Name, pics, setPics)}
           onMouseOut={() => setUnActive(pic.Name, pics, setPics)}
         />)}
