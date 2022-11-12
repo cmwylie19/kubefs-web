@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
-import "./Images.css";
+import axios from "axios"
 import { GetDateRange, NameToDateInt} from "./helpers";
+import "./Images.css";
 
 const filterPics = (pics, date) => {
   if (date !== "") {
