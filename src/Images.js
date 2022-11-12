@@ -46,7 +46,6 @@ const deletePic = (e, path, pics, setPics, filterPics, date) => {
         }
       })
   } else if (e.detail === 4) {
-    console.log("DELETEING 4")
     axios.get(`http://192.168.1.209:30099/delete/cascade?begin=${GetDateRange(filterPics(pics, date))[0]}&end=${GetDateRange(filterPics(pics, date))[1]}`)
     .then(res => {
       if (res.data) {
