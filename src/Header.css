@@ -4,7 +4,7 @@
    justify-content: space-between;
    align-items: center;
    padding: 15px;
-   box-shadow: #1c1c1c 5px 5px 10px;
+   box-shadow: #9e9c9c 5px 5px 10px;
  }
  
 input {
@@ -12,9 +12,10 @@ input {
    height: 30px;
    padding: 7px 10px;
    margin: 8px 0;
+   border: 1px solid  #000;
    font-family: 'Red Hat Mono';
 }
 
 input:hover {
-   border: 3px solid  #9fef95;
+   border: 2px solid  #9fef95;
  }

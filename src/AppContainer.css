@@ -1,5 +1,5 @@
 .app-container {
-   background-color: #555858;
+   background-color: #fbfbfb;
    height: 100% !important;
    top: 0;
    bottom: 0;
@@ -43,8 +43,8 @@
    flex-direction: row;
    height: 65px;
    text-align: center;
-   background: #2c2d2d;
-   color: white;
+   background: #ffffff;
+   color: rgb(201, 1, 208);
    font-size: 10px;
-   box-shadow: #2c2d2d 0px 0px 10px;
+   box-shadow: #c4c6c6 0px 0px 10px;
  }
