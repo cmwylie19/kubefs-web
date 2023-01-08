@@ -4,46 +4,47 @@ export const FetchPics = async (setPics) => {
     axios.get('http://192.168.1.209:30099/list')
         .then(res => {
             res.data.map(pic => pic.Active = false)
-            setPics(res.data)
+            setPics(res.data.reverse())
         })
 };
 
-const SetActive = (name, pics, setPics) => {
+export const SetActive = (name, pics, setPics) => {
     pics.map(pic => {
-      if (pic.Name === name) {
-        pic.Active = true
-      }
-      return true
-    })
-    setPics(pics)
-  }
-  const SetUnActive = (name, pics, setPics) => {
-    pics.map(pic => {
-      if (pic.Name === name) {
-        pic.Active = false;
-      }
-      return true
-    })
-    setPics(pics)
-  }
-  
-  const DeletePic = (e, path, pics, setPics, filterPics, date) => {
-    if (e.detail === 2) {
-      axios.get('http://192.168.1.209:30099/delete/file' + path)
-        .then(res => {
-          if (res.data) {
-            setPics(pics.filter(pic => pic.Path !== path));
-          }
-        })
-    } else if (e.detail === 4) {
-      axios.get(`http://192.168.1.209:30099/delete/cascade?begin=${GetDateRange(filterPics(pics, date))[0]}&end=${GetDateRange(filterPics(pics, date))[1]}`)
-      .then(res => {
-        if (res.data) {
-          setPics(pics.filter(pic => NameToDateInt(pic.Path) >=  GetDateRange(filterPics(pics, date))[0] && NameToDateInt(pic.Path) <= GetDateRange(filterPics(pics, date))[1]));
+        if (pic.Name === name) {
+            pic.Active = true
         }
-      })
+        return true
+    })
+    setPics(pics)
+}
+
+export const SetUnActive = (name, pics, setPics) => {
+    pics.map(pic => {
+        if (pic.Name === name) {
+            pic.Active = false;
+        }
+        return true
+    })
+    setPics(pics)
+}
+
+export const DeletePic = (e, path, pics, setPics, filterPics, date) => {
+    if (e.detail === 2) {
+        axios.get('http://192.168.1.209:30099/delete/file' + path)
+            .then(res => {
+                if (res.data) {
+                    setPics(pics.filter(pic => pic.Path !== path));
+                }
+            })
+    } else if (e.detail === 4) {
+        axios.get(`http://192.168.1.209:30099/delete/cascade?begin=${GetDateRange(filterPics(pics, date))[0]}&end=${GetDateRange(filterPics(pics, date))[1]}`)
+            .then(res => {
+                if (res.data) {
+                    setPics(pics.filter(pic => NameToDateInt(pic.Path) >= GetDateRange(filterPics(pics, date))[0] && NameToDateInt(pic.Path) <= GetDateRange(filterPics(pics, date))[1]));
+                }
+            })
     }
-  }
+}
 
 export const FilterPics = (pics, date) => {
     if (date !== "") {
